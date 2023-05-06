@@ -8,11 +8,13 @@ except ImportError as e:
     os.system("sudo pip3 install numpy")
     import numpy as np
 
-def ridge(x,y,data):
+def ridge(data):
+    x,y=read_data(path='./data/exp02')
     loss = np.dot(np.linalg.inv(np.dot(x.T,x)+0.5*np.identity(6,dtype=int)),np.dot(x.T,y))
     return data @ loss
     
-def lasso(x,y,data):
+def lasso(data):
+    x,y=read_data(path='./data/exp02')
     loss = np.dot(np.linalg.inv(np.dot(x.T,x)),np.dot(x.T,y)+0.5*np.ones(6))
     return loss @ data
 
@@ -24,5 +26,5 @@ def read_data(path='./data/exp02/'):
 def main():
     x,y=read_data(path='./data/exp02/')
     data=np.array([1,2,3,4,5,6])
-    print (ridge(x,y,data))
-    print (lasso(x,y,data))
+    print (ridge(data))
+    print (lasso(data))
