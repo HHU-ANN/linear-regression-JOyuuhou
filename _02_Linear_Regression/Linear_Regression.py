@@ -15,7 +15,7 @@ def ridge(data):
     
 def lasso(data):
     x,y=read_data()
-    loss = np.dot(np.linalg.inv(np.dot(x.T,x)),np.dot(x.T,y)-0.5*np.ones(6))
+    loss = np.dot(np.linalg.inv(np.dot(x.T,x)),np.dot(x.T,y)+0.5*np.ones(6))
     return loss @ data
 
 def read_data(path='./data/exp02/'):
